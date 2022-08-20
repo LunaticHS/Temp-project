@@ -11,6 +11,9 @@ public class TimeToRotate : MonoBehaviour
     public Collider2D[] colliders;
     private int index = 0;
     public UnityEvent onRotateFinish;
+    public GameObject PlayerA;
+    public GameObject PlayerB;
+
 
     private float Timer = 10;
     void Start()
@@ -28,6 +31,7 @@ public class TimeToRotate : MonoBehaviour
             Timer = 0;
             Quaternion tar = Quaternion.Euler(0, 0, rotareAngle) * transform.rotation;
             StartCoroutine("Rotate", tar);
+            freeze();
         }
     }
 
@@ -39,6 +43,7 @@ public class TimeToRotate : MonoBehaviour
                             (transform.rotation, tarRotation, rotateSpeed * Time.deltaTime);
             yield return null;
         }
+        Release();
         onRotateFinish?.Invoke();
     }
     private void SwitchConfiner()
@@ -48,4 +53,29 @@ public class TimeToRotate : MonoBehaviour
 
     }
 
+    void freeze()
+    {
+        Rigidbody2D rigA = this.PlayerA.GetComponent<Rigidbody2D>();
+        rigA.gravityScale = 0;
+        rigA.velocity = new Vector2(0,0);
+        Rigidbody2D rigB = this.PlayerB.GetComponent<Rigidbody2D>();
+        rigB.gravityScale = 0;
+        rigB.velocity = new Vector2(0, 0);
+        PlayerA Pa = this.PlayerA.GetComponent<PlayerA>();
+        Pa.IsFrozen = true;
+        PlayerB Pb = this.PlayerB.GetComponent<PlayerB>();
+        Pb.IsFrozen = true;
+    }
+
+    void Release()
+    {
+        Rigidbody2D rigA = this.PlayerA.GetComponent<Rigidbody2D>();
+        rigA.gravityScale = 3;
+        Rigidbody2D rigB = this.PlayerB.GetComponent<Rigidbody2D>();
+        rigB.gravityScale = 3;
+        PlayerA Pa = this.PlayerA.GetComponent<PlayerA>();
+        Pa.IsFrozen = false;
+        PlayerB Pb = this.PlayerB.GetComponent<PlayerB>();
+        Pb.IsFrozen = false;
+    }
 }
