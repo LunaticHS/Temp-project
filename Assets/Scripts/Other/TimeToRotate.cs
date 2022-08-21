@@ -37,10 +37,16 @@ public class TimeToRotate : MonoBehaviour
 
     IEnumerator Rotate(Quaternion tarRotation)
     {
+        Transform Ta = this.PlayerA.transform.GetComponent<Transform>();
+        Transform Tb = this.PlayerB.transform.GetComponent<Transform>();
         while (transform.rotation != tarRotation)
         {
             transform.rotation = Quaternion.RotateTowards
                             (transform.rotation, tarRotation, rotateSpeed * Time.deltaTime);
+            Ta.rotation = Quaternion.RotateTowards
+                            (Ta.rotation, tarRotation, -rotateSpeed * Time.deltaTime);
+            Tb.rotation = Quaternion.RotateTowards
+                            (Tb.rotation, tarRotation, -rotateSpeed * Time.deltaTime);
             yield return null;
         }
         Release();

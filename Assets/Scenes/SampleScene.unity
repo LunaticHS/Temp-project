@@ -1002,6 +1002,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &894042005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7444643019501553425, guid: a5fcfc8839a9a8c4aa42b6ac24fc75a3, type: 3}
+  m_PrefabInstance: {fileID: 7444643020038324546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928214523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1164,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PlayerA: {fileID: 1881378754}
+  PlayerB: {fileID: 894042005}
 --- !u!210 &1016169494
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1870,6 +1877,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1881378754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2656664732266653994, guid: 7a8eb72185941594190af4bacd2fd03f, type: 3}
+  m_PrefabInstance: {fileID: 2656664733026708419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1920415821
 GameObject:
   m_ObjectHideFlags: 0
